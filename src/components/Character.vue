@@ -4,12 +4,12 @@ defineProps(['character']);
 </script>
 
 <template>
-  <div class="col-md-4 mb-3">
+  <div class="col-md-2 mb-3">
     <div class="card">
 
       <img :src="character.image" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{ character.name }}</h5>
+        <b class="card-title">{{ character.name }}</b>
         <p class="card-text">
           {{ character.gender }} | {{ character.species }} | {{ character.status }}
         </p>
