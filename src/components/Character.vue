@@ -1,6 +1,11 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 defineProps(['character']);
+const emit = defineEmits();
+
+const showMore = (id) => {
+  emit("showModal", id);
+};
 </script>
 
 <template>
@@ -13,7 +18,10 @@ defineProps(['character']);
         <p class="card-text">
           {{ character.gender }} | {{ character.species }} | {{ character.status }}
         </p>
-        <a href="#" class="btn btn-primary w-100">Ver</a>
+
+        <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#evilModal" @click="showMore(character.id)">
+          Ver más
+        </button>
       </div>
 
     </div>
