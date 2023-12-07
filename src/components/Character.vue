@@ -4,7 +4,7 @@ defineProps(['character']);
 </script>
 
 <template>
-  <div class="col-md-2 mb-3">
+  <div class="col-6 col-sm-4 col-lg-2 mb-3">
     <div class="card">
 
       <img :src="character.image" class="card-img-top" alt="...">

@@ -6,14 +6,19 @@ import Character from '../components/Character.vue';
 const characters = ref([]);
 const page       = ref(1);
 const pages      = ref(1);
+const search     = ref("");
 
 const changePage = (goToPage) => {
   page.value = (goToPage <= 0 || goToPage > pages) ? page : goToPage;
   getData();
 };
+const searchData = () => {
+  page.value = 1;
+  getData();
+};
 const getData = async () => {
   try {
-    const res = await axios.get("https://rickandmortyapi.com/api/character/"+(page.value !== 0 ? `?page=${ page.value }` : ''));
+    const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${ page.value }&name=${ search.value }`);
     if (res.status !== 200)
       throw ("Error al consultar");
 
@@ -24,16 +29,20 @@ const getData = async () => {
   }
 };
 
-onMounted(() => {
-  getData();
-})
+onMounted(() => getData());
 </script>
 
 <template>
   <div class="row py-5">
-    <div class="col-md-12">
-      <h5 class="text-center">Rick and Morty</h5>
-      <hr>
+    <div class="col-md-12 mb-3">
+      <h4 class="text-center">Rick and Morty</h4>
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" @keyup.enter="searchData" v-model="search">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" @click="searchData">Buscar</button>
+        </div>
+      </div>
     </div>
 
     <Character v-for="character of characters" :key="character.id" :character="character" />
@@ -43,7 +52,7 @@ onMounted(() => {
     <ul class="pagination">
 
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous" @click="changePage(page-1)">
+        <a class="page-link" href="#" aria-label="Previous" @click="changePage(page - 1)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -53,7 +62,7 @@ onMounted(() => {
       <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
 
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next" @click="changePage(page+1)">
+        <a class="page-link" href="#" aria-label="Next" @click="changePage(page + 1)">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
