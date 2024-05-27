@@ -1,29 +1,30 @@
-# rick-and-morty
+# Rick and Morty
 
-This template should help get you started developing with Vue 3 in Vite.
+Esta aplicación está diseñada para explorar el universo de "Rick and Morty". Proporciona una interfaz para buscar y visualizar información sobre los personajes, episodios y locaciones de la popular serie animada.
 
-## Recommended IDE Setup
+## Tecnologías Utilizadas
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Vue.js: Framework progresivo de JavaScript que facilita la creación de interfaces de usuario interactivas y componentes reutilizables.
 
-## Customize configuration
+- Vite: Para el desarrollo y la construcción de la aplicación, utilicé Vite, una herramienta de compilación moderna que ofrece un entorno de desarrollo extremadamente rápido y una compilación optimizada para la producción.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Vue Router: La navegación entre diferentes vistas de la aplicación se maneja con Vue Router, permitiendo una experiencia de usuario fluida y sin interrupciones.
 
-## Project Setup
+- Axios: Para las solicitudes HTTP, utilicé Axios, una biblioteca muy popular que facilita la comunicación con APIs, como la API de "Rick and Morty".
+
+- Bootstrap: La aplicación también incorpora Bootstrap para el diseño y la estilización, proporcionando una apariencia profesional y responsiva.
+
+## Instalación y Configuración
+
+Para comenzar con la aplicación "Rick and Morty", sigue estos pasos:
 
 ```sh
+# Instalación de dependencias:
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Modo desarrollo:
 npm run dev
-```
 
-### Compile and Minify for Production
-
-```sh
+# Construcción para producción:
 npm run build
 ```

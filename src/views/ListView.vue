@@ -36,6 +36,7 @@ const showModal = async(id) => {
     if (res.status !== 200)
       throw ("Error al consultar");
 
+    console.log(res.data)
     currentCharacter.value = res.data;
   } catch (error) {
     alert(error);
@@ -47,18 +48,20 @@ onMounted(() => getData());
 
 <template>
   <Modal :character="currentCharacter" />
-  <div class="row py-5">
-    <div class="col-md-12 mb-3">
-      <h4 class="text-center">Rick and Morty</h4>
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-6 col-lg-4 my-3">
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control" @keyup.enter="searchData" v-model="search">
+        <input type="text" class="form-control" placeholder="Buscar un personaje" @keyup.enter="searchData" v-model="search">
         <div class="input-group-append">
           <button class="btn btn-primary" type="button" @click="searchData">Buscar</button>
         </div>
       </div>
-    </div>
 
+    </div>
+  </div>
+
+  <div class="row">
     <Character
       v-for="character of characters"
       :key="character.id"
@@ -69,15 +72,15 @@ onMounted(() => getData());
   <nav aria-label="Page navigation example">
     <ul class="pagination">
 
-      <li class="page-item">
+      <li v-if="page > 1" class="page-item">
         <a class="page-link" href="#" aria-label="Previous" @click="changePage(page - 1)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
 
-      <li class="page-item"><a class="page-link" href="#">{{ page }}</a></li>
-      <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-      <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+      <li class="page-item">
+        <a class="page-link" href="#">{{ page }}</a>
+      </li>
 
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Next" @click="changePage(page + 1)">
